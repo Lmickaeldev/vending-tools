@@ -10,8 +10,40 @@
             background: #111;
             color: #eee;
             margin: 0;
-            padding: 20px;
             box-sizing: border-box;
+        }
+
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: #000;
+            border-bottom: 1px solid #333;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            font-weight: 700;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ccc;
+            margin-left: 12px;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .page {
+            padding: 20px;
         }
 
         h1 {
@@ -122,18 +154,29 @@
 </head>
 
 <body>
-    <h1>Vending Rust – Lecteur</h1>
+    <nav class="top-nav">
+        <a href="creator.html" class="brand">Rust Vending Tool</a>
+        <div class="nav-links">
+            <a href="creator.html">Créateur</a>
+            <a href="viewer.html">Lecteur</a>
+            <a href="tuto.html">Tutoriel</a>
+        </div>
+    </nav>
 
-    <div class="top-bar">
-        <input type="file" id="file-input" accept=".json" />
-        <span class="small">
-            Choisis un fichier <code>vending.json</code> exporté depuis le créateur.<br>
-            Ensuite, utilise “📋 Copier pour IG” pour remplir ta vending en jeu.
-        </span>
+    <div class="page">
+        <h1>Vending Rust – Lecteur</h1>
+
+        <div class="top-bar">
+            <input type="file" id="file-input" accept=".json" />
+            <span class="small">
+                Choisis un fichier <code>vending.json</code> exporté depuis le créateur.<br>
+                Ensuite, clique sur “📋 Copier pour IG” pour avoir le script de config.
+            </span>
+        </div>
+
+        <div id="status" class="small">Aucun fichier chargé.</div>
+        <div id="machines-container" style="margin-top:10px;"></div>
     </div>
-
-    <div id="status" class="small">Aucun fichier chargé.</div>
-    <div id="machines-container" style="margin-top:10px;"></div>
 
     <script src="viewer.js"></script>
 </body>

@@ -10,13 +10,47 @@
             background: #111;
             color: #eee;
             margin: 0;
-            padding: 20px;
+        }
+
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: #000;
+            border-bottom: 1px solid #333;
+            padding: 10px 20px;
             display: flex;
-            gap: 20px;
+            align-items: center;
+            justify-content: space-between;
             box-sizing: border-box;
         }
 
-        h1 {
+        .brand {
+            font-weight: 700;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ccc;
+            margin-left: 12px;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .layout {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1,
+        h2 {
             margin-top: 0;
         }
 
@@ -114,85 +148,96 @@
 </head>
 
 <body>
-    <div class="sidebar">
-        <h1>Vending tool creator </h1>
+    <nav class="top-nav">
+        <a href="creator.html" class="brand">Rust Vending Tool</a>
+        <div class="nav-links">
+            <a href="creator.html">Créateur</a>
+            <a href="viewer.html">Lecteur</a>
+            <a href="tuto.html">Tutoriel</a>
+        </div>
+    </nav>
 
-        <div class="field">
-            <label for="machine-select">Vending machine :</label>
-            <select id="machine-select"></select>
+    <div class="layout">
+        <div class="sidebar">
+            <h1>Vending Rust</h1>
+
+            <div class="field">
+                <label for="machine-select">Vending machine :</label>
+                <select id="machine-select"></select>
+            </div>
+
+            <div class="actions">
+                <button id="btn-add-machine">+ Nouvelle machine</button>
+                <button id="btn-delete-machine">🗑 Supprimer</button>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <button id="btn-export-json">💾 Exporter vending.json</button>
+                <button id="btn-export-js">💾 Exporter vending-config.js</button>
+                <div class="small">
+                    JSON : data brute<br />
+                    JS : éventuel usage custom.
+                </div>
+            </div>
         </div>
 
-        <div class="actions">
-            <button id="btn-add-machine">+ Nouvelle machine</button>
-            <button id="btn-delete-machine">🗑 Supprimer</button>
+        <div class="main">
+            <h2>Détails de la machine</h2>
+
+            <div id="machine-form">
+                <div class="field">
+                    <label for="machine-name">Nom :</label>
+                    <input id="machine-name" type="text" placeholder="Nom de la vending" />
+                </div>
+                <div class="field">
+                    <label for="machine-location">Localisation (RP / coords) :</label>
+                    <input id="machine-location" type="text" placeholder="Outpost, Base main, etc." />
+                </div>
+                <div class="field">
+                    <label for="machine-notes">Notes :</label>
+                    <input id="machine-notes" type="text" placeholder="Infos, accès, etc." />
+                </div>
+                <button id="btn-save-machine">💾 Sauvegarder la machine</button>
+            </div>
+
+            <hr />
+
+            <h2>Offres (échanges)</h2>
+
+            <div id="offer-form">
+                <div class="field">
+                    <label for="item-select">Item vendu :</label>
+                    <select id="item-select"></select>
+                </div>
+                <div class="field">
+                    <label for="offer-quantity">Quantité vendue :</label>
+                    <input id="offer-quantity" type="number" min="1" value="1" />
+                </div>
+                <div class="field">
+                    <label for="offer-price">Prix (nombre de monnaie) :</label>
+                    <input id="offer-price" type="number" min="0" value="0" />
+                </div>
+                <div class="field">
+                    <label for="currency-select">Monnaie (item reçu) :</label>
+                    <select id="currency-select"></select>
+                </div>
+                <div id="currency-preview"></div>
+                <button id="btn-add-offer">+ Ajouter l'offre</button>
+            </div>
+
+            <table id="offers-table">
+                <thead>
+                    <tr>
+                        <th>Item vendu</th>
+                        <th>Quantité</th>
+                        <th>Prix</th>
+                        <th>Monnaie</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
         </div>
-
-        <div style="margin-top: 20px;">
-            <!-- <button id="btn-export-json">💾 Exporter vending.json</button> -->
-            <button id="btn-export-js">💾 Exporter vending-config.js</button>
-            <div class="small">
-                JSON : data brute<br />
-                JS : pour le lecteur / GitHub Pages.
-            </div>
-        </div>
-    </div>
-
-    <div class="main">
-        <h2>Détails de la machine</h2>
-
-        <div id="machine-form">
-            <div class="field">
-                <label for="machine-name">Nom :</label>
-                <input id="machine-name" type="text" placeholder="Nom de la vending" />
-            </div>
-            <div class="field">
-                <label for="machine-location">Localisation (RP / coords) :</label>
-                <input id="machine-location" type="text" placeholder="Outpost, Base main, etc." />
-            </div>
-            <div class="field">
-                <label for="machine-notes">Notes :</label>
-                <input id="machine-notes" type="text" placeholder="Infos, accès, etc." />
-            </div>
-            <button id="btn-save-machine">💾 Sauvegarder la machine</button>
-        </div>
-
-        <hr />
-
-        <h2>Offres (échanges)</h2>
-
-        <div id="offer-form">
-            <div class="field">
-                <label for="item-select">Item vendu :</label>
-                <select id="item-select"></select>
-            </div>
-            <div class="field">
-                <label for="offer-quantity">Quantité vendue :</label>
-                <input id="offer-quantity" type="number" min="1" value="1" />
-            </div>
-            <div class="field">
-                <label for="offer-price">Prix (nombre de monnaie) :</label>
-                <input id="offer-price" type="number" min="0" value="0" />
-            </div>
-            <div class="field">
-                <label for="currency-select">Monnaie (item reçu) :</label>
-                <select id="currency-select"></select>
-            </div>
-            <div id="currency-preview"></div>
-            <button id="btn-add-offer">+ Ajouter l'offre</button>
-        </div>
-
-        <table id="offers-table">
-            <thead>
-                <tr>
-                    <th>Item vendu</th>
-                    <th>Quantité</th>
-                    <th>Prix</th>
-                    <th>Monnaie</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
     </div>
 
     <script src="creator.js"></script>
