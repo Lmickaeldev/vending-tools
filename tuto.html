@@ -109,13 +109,11 @@
         <h1>Tutoriel – Rust Vending Tool</h1>
         <p class="small">Outil pensé pour préparer tes vending machines Rust vanilla, sans triche.</p>
 
-        <h2>1. Installation locale</h2>
+        <h2>1. Utilisation</h2>
         <ol>
-            <li>Place tout le projet dans ton serveur local (par ex. <code>C:\wamp64\www\vending-tool\</code>).</li>
-            <li>Vérifie que tu as les fichiers : <code>creator.html</code>, <code>creator.js</code>,
-                <code>viewer.html</code>, <code>viewer.js</code>, <code>items.json</code>, etc.</li>
-            <li>Lance WAMP (ou un autre serveur HTTP).</li>
-            <li>Ouvre dans ton navigateur : <code>http://localhost/vending-tool/creator.html</code>.</li>
+            <li>cette application Sert a préparer tes vending machines Rust vanilla, sans triche.</li>
+            <li>elle va te permettre de créer un fichiers : <code>vending.json</code></li>
+            <li>pour lire le fichier <code>vending.json</code>, utilise la page <strong>Lecteur</strong>.</li>
         </ol>
 
         <h2>2. Créer une vending (page Créateur)</h2>
@@ -148,13 +146,11 @@
             <li>Clique sur <strong>💾 Exporter vending.json</strong>.</li>
             <li>Un fichier <code>vending.json</code> est téléchargé sur ton PC.</li>
             <li>C'est ce fichier que tu utiliseras ensuite sur la page <strong>Lecteur</strong>.</li>
-            <li>Tu peux aussi le versionner sur GitHub si tu veux garder l'historique de tes shops.</li>
         </ul>
 
         <h2>4. Lire la config pour jouer (page Lecteur)</h2>
         <p>Sur la page <strong>Lecteur</strong> (<code>viewer.html</code>) :</p>
         <ol>
-            <li>Ouvre <code>http://localhost/vending-tool/viewer.html</code>.</li>
             <li>Dans le champ <strong>Choisir un fichier</strong>, sélectionne ton <code>vending.json</code>.</li>
             <li>Toutes tes vending machines s'affichent avec :
                 <ul>
@@ -163,7 +159,7 @@
                     <li>Les quantités, prix et monnaies.</li>
                 </ul>
             </li>
-            <li>Pour une machine, clique sur <strong>📋 Copier pour IG</strong> :
+            <li>Pour une machine, clique sur <strong>📋 Copier</strong> :
                 <ul>
                     <li>Un texte lisible est copié dans ton presse-papier,</li>
                     <li>Tu peux le coller dans un bloc-notes, Discord, ou l'overlay Steam.</li>
@@ -192,19 +188,6 @@
             Cet outil est fait pour préparer tes shops au calme, et te donner un <strong>plan clair</strong> à suivre
             pour remplir ta vending en quelques secondes une fois en jeu.
         </div>
-
-        <h2>6. Utilisation avec GitHub (optionnel)</h2>
-        <ul>
-            <li>Ajoute ton <code>vending.json</code> à un dépôt GitHub.</li>
-            <li>Tu peux garder un historique par wipe, par type de shop, etc.</li>
-            <li>Tu peux aussi partager ta config à d'autres joueurs (ils n'ont besoin que de <code>items.json</code> +
-                <code>viewer.html</code> + <code>viewer.js</code>).</li>
-        </ul>
-
-        <p class="small">
-            Si tu veux aller plus loin (plugins serveur, formats spéciaux, etc.), tu pourras adapter l'export plus tard,
-            mais cette version reste 100% compatible vanilla.
-        </p>
     </div>
 </body>
 
