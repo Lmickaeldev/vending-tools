@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Vending Rust – Lecteur</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            background: #111;
+            color: #eee;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .top-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        input[type="file"] {
+            background: #222;
+            color: #eee;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 4px;
+            font-size: 14px;
+        }
+
+        .small {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .machine {
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            background: #181818;
+        }
+
+        .machine-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 6px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .machine-name {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .machine-location {
+            font-size: 13px;
+            color: #aaa;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .copy-button {
+            background: #222;
+            color: #eee;
+            border: 1px solid #555;
+            border-radius: 4px;
+            padding: 3px 8px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .copy-button:hover {
+            background: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        th,
+        td {
+            border: 1px solid #333;
+            padding: 4px 6px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        th {
+            background: #222;
+        }
+
+        .item-preview {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .item-preview img {
+            width: 28px;
+            height: 28px;
+            image-rendering: pixelated;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Vending Rust – Lecteur</h1>
+
+    <div class="top-bar">
+        <input type="file" id="file-input" accept=".json" />
+        <span class="small">
+            Choisis un fichier <code>vending.json</code> exporté depuis le créateur.<br>
+            Ensuite, utilise “📋 Copier pour IG” pour remplir ta vending en jeu.
+        </span>
+    </div>
+
+    <div id="status" class="small">Aucun fichier chargé.</div>
+    <div id="machines-container" style="margin-top:10px;"></div>
+
+    <script src="viewer.js"></script>
+</body>
+
+</html>
